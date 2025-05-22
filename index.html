@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft風ランチャー</title>
+    <title>EaglerCraft</title>
     <style>
         /* 背景デザイン */
         body {
@@ -113,19 +113,20 @@
 <body>
     <div class="launcher-container">
         <img src="minecraft_logo.png" alt="ランチャーロゴ" class="launcher-logo">
-        <h2>ゲームランチャー</h2>
-        <p>起動するゲームを選択してください:</p>
+        <h2>EaglerCraft Launcher</h2>
+        <p>起動するバージョンを選択してください:</p>
         <select id="gameSelect">
-            <option value="google.html">Google（デモ）</option>
-            <option value="game1.html">ゲーム1</option>
-            <option value="game2.html">ゲーム2</option>
+            <option value="1.12.2.html">1.12.2</option>
+            <option value="1.9.4.html">1.9.4</option>
+            <option value="1.8.8.html">1.8.8</option>
+            <option value="1.5.2.html">1.5.2</option>
         </select>
         <button class="launch-btn" onclick="launchGame()">▶ 起動</button>
     </div>
 
     <div id="floatingWindow">
         <div class="title-bar">
-            ゲーム画面
+            EaglerCraft
             <button class="close-btn" onclick="document.getElementById('floatingWindow').style.display='none'">✖</button>
         </div>
         <iframe id="gameIframe"></iframe>

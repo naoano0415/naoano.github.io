@@ -3,59 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>フローティング iframe</title>
+    <title>ゲームランチャー</title>
     <style>
-        /* 全体のスタイル */
+        /* 背景デザイン */
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
             color: white;
             margin: 0;
-            padding: 20px;
+            padding: 50px;
         }
-        
+
         h1 {
             font-size: 2em;
             margin-bottom: 20px;
         }
 
-        /* おしゃれなボタン */
+        /* ランチャーのコンテナ */
+        .launcher-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+        }
+
+        /* コンボボックス */
+        select {
+            font-size: 1.2em;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        /* 起動ボタン */
         button {
-            background: white;
-            color: #ff7e5f;
+            background: #4ca1af;
+            color: white;
             border: none;
             padding: 10px 20px;
-            font-size: 1em;
+            font-size: 1.2em;
             cursor: pointer;
             border-radius: 5px;
+            margin-top: 10px;
             transition: 0.3s;
         }
 
         button:hover {
-            background: #ff7e5f;
-            color: white;
+            background: #2c3e50;
         }
 
         /* フローティングウィンドウ */
         #floatingWindow {
             display: none;
             position: fixed;
-            top: 5%;
-            left: 5%;
-            width: 90%;
-            height: 90%;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
             background: white;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
-        /* iframe のスタイル */
-        #floatingWindow iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        /* タイトルバー */
+        .title-bar {
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
         }
 
         /* 閉じるボタン */
@@ -75,26 +95,42 @@
         .close-btn:hover {
             background: darkred;
         }
+
+        /* iframe */
+        #floatingWindow iframe {
+            width: 100%;
+            height: calc(100% - 40px);
+            border: none;
+        }
     </style>
 </head>
 <body>
-    <h1>ようこそ！</h1>
-    <button onclick="openIframe()">開く</button>
+    <h1>ゲームランチャー</h1>
+    <div class="launcher-container">
+        <p>起動するゲームを選択してください:</p>
+        <select id="gameSelect">
+            <option value="google.html">Google（デモ）</option>
+            <option value="game1.html">ゲーム1</option>
+            <option value="game2.html">ゲーム2</option>
+        </select>
+        <button onclick="launchGame()">起動</button>
+    </div>
 
     <div id="floatingWindow">
-        <button class="close-btn" onclick="document.getElementById('floatingWindow').style.display='none'">✖ 閉じる</button>
-        <iframe id="iframeContent" src="google.html"></iframe>
+        <div class="title-bar">
+            ゲーム画面
+            <button class="close-btn" onclick="document.getElementById('floatingWindow').style.display='none'">✖</button>
+        </div>
+        <iframe id="gameIframe"></iframe>
     </div>
 
     <script>
-        function openIframe() {
+        function launchGame() {
+            let selectedGame = document.getElementById('gameSelect').value;
             let floatingWindow = document.getElementById('floatingWindow');
-            let iframe = document.getElementById('iframeContent');
+            let iframe = document.getElementById('gameIframe');
 
-            // ブラウザのサイズを取得して適用
-            floatingWindow.style.width = window.innerWidth * 0.9 + 'px';
-            floatingWindow.style.height = window.innerHeight * 0.9 + 'px';
-
+            iframe.src = selectedGame;
             floatingWindow.style.display = 'block';
         }
     </script>

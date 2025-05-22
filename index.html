@@ -3,56 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ゲームランチャー</title>
+    <title>Minecraft風ランチャー</title>
     <style>
         /* 背景デザイン */
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            background: #1e1e1e;
             color: white;
             margin: 0;
-            padding: 50px;
+            padding: 20px;
         }
 
-        h1 {
-            font-size: 2em;
+        /* ランチャーのメインコンテナ */
+        .launcher-container {
+            background: #333;
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ロゴ */
+        .launcher-logo {
+            width: 100px;
             margin-bottom: 20px;
         }
 
-        /* ランチャーのコンテナ */
-        .launcher-container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-            display: inline-block;
-        }
-
-        /* コンボボックス */
+        /* ドロップダウンメニュー */
         select {
             font-size: 1.2em;
             padding: 10px;
+            width: 100%;
+            background: #444;
+            color: white;
             border-radius: 5px;
             border: none;
             outline: none;
         }
 
         /* 起動ボタン */
-        button {
-            background: #4ca1af;
+        .launch-btn {
+            background: #5aaf5a;
             color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 1.2em;
+            padding: 15px;
+            font-size: 1.5em;
             cursor: pointer;
             border-radius: 5px;
             margin-top: 10px;
             transition: 0.3s;
+            width: 100%;
         }
 
-        button:hover {
-            background: #2c3e50;
+        .launch-btn:hover {
+            background: #449744;
         }
 
         /* フローティングウィンドウ */
@@ -105,15 +111,16 @@
     </style>
 </head>
 <body>
-    <h1>ゲームランチャー</h1>
     <div class="launcher-container">
+        <img src="minecraft_logo.png" alt="ランチャーロゴ" class="launcher-logo">
+        <h2>ゲームランチャー</h2>
         <p>起動するゲームを選択してください:</p>
         <select id="gameSelect">
             <option value="google.html">Google（デモ）</option>
             <option value="game1.html">ゲーム1</option>
             <option value="game2.html">ゲーム2</option>
         </select>
-        <button onclick="launchGame()">起動</button>
+        <button class="launch-btn" onclick="launchGame()">▶ 起動</button>
     </div>
 
     <div id="floatingWindow">
